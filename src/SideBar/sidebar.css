@@ -1,0 +1,97 @@
+.sidebar-icon-btn {
+    display: inline-flex;          /* flex container */
+    align-items: center;           /* vertical center */
+    justify-content: center;       /* horizontal center */
+    padding: 0;                    /* remove padding if you want exact size */
+    width: 20px;                   /* square button */
+    height: 20px;                  /* fixed height */
+    border-radius: 4px;
+    color: #6c757d;
+    font-size: 14px;               /* adjust plus size */
+    line-height: 1;
+    cursor: pointer;
+    transition: 
+        background-color 0.1s ease,
+        transform 0.05s ease,
+        color 0.1s ease;
+}
+
+.sidebar-icon-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #495057;
+}
+
+.sidebar-icon-btn:active {
+    background-color: rgba(0, 0, 0, 0.12);
+    transform: translateY(1px);
+}
+
+.sidebar-container {
+  position:relative;
+  width: 250px;
+  min-height: 100vh;
+  background-color: rgb(233, 236, 239); /* darker than bg-light */
+}
+
+/* Resize handle */
+.sidebar-resizer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  cursor: col-resize;
+  background-color: transparent;
+}
+
+/* Optional hover feedback */
+.sidebar-resizer:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/* Header row: fixed alignment */
+.node-header-row {
+  display: flex;
+  align-items: flex-start; /* 🔑 aligns to top */
+}
+
+/* Node card */
+.node-item {
+  flex: 1;
+  background-color: rgb(248, 249, 250);
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+/* Title row inside card */
+.node-title-row {
+  min-height: 24px; /* 🔒 fixed header height */
+  align-items: center;
+}
+
+/* Delete button */
+.node-delete-btn {
+  margin-right: 6px;
+  margin-top: 9px; /* 🔒 aligns with title */
+
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: none;
+
+  background-color: #c6636d;
+  color: white;
+
+  font-size: 14px;
+  line-height: 16px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.node-delete-btn:hover {
+  background-color: #bb2d3b;
+}

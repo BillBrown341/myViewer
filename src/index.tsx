@@ -16,9 +16,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+
+// STORES:
+import { store } from "./Stores/storeRegistry";
+
 
 // As of React 18
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-root.render(<App />)
+root.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+)
