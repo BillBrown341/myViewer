@@ -40,7 +40,7 @@ export default function SideBar() {
     }, []);
 
     return (
-        <div className="d-flex">
+        // <div className="d-flex">
             <div
                 className="sidebar-container"
                 style={{ width }}
@@ -56,6 +56,6 @@ export default function SideBar() {
                 onMouseDown={handleMouseDown}
                 />
             </div>
-        </div>
+        // </div>
     );
 }

@@ -1,5 +1,5 @@
-import System from "osh-js/source/core/sweapi/system/System";
-import DataStream from "osh-js/source/core/sweapi/datastream/datastream";
+import React from 'react';
+
 
 // These are the basic data structures of that come from OpenSensorHub
 export interface OshNetworkProperties {
@@ -37,4 +37,11 @@ export interface OshNode {
   networkProperties:OshNetworkProperties;
   systems: OshSystem[];
   datastreams:OshDataStream[];  
+}
+
+export interface VisualizationDescriptor {
+  id:string;
+  label:string;
+  icon:string | React.ReactNode;
+  description:string;
 }

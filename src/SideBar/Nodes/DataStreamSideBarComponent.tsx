@@ -2,7 +2,7 @@ import React from "react";
 import { OshDataStream } from "../../dataTypes";
 
 
-export default function DataStreamCard({ oshDataStream }: { oshDataStream: OshDataStream }){
+export default function DataStreamComponent({ oshDataStream }: { oshDataStream: OshDataStream }){
 
 
     return (

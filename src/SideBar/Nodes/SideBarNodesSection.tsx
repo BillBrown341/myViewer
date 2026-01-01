@@ -3,7 +3,7 @@ import '../sidebar.css'
 import AddNodeForm from "../../Forms/AddNodeForm";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Stores/storeRegistry";
-import NodeCard from "./NodeCard";
+import NodeSideBarComponent from "./NodeSideBarComponent";
 
 
 export default function SideBarNodesSection(){
@@ -33,7 +33,7 @@ export default function SideBarNodesSection(){
             </div>
             <ul className="list-unstyled mb-4">
                 {allNodes.map((node)=>(
-                    <NodeCard key={node.id} oshNode={node} />                    
+                    <NodeSideBarComponent key={node.id} oshNode={node} />                    
                 ))}
                 
             </ul>

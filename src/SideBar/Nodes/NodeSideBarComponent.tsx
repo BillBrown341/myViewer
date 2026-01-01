@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { OshNode } from "../../dataTypes";
-import SystemCard from "./SystemCard";
+import SystemSideBarComponent from "./SystemSideBarComponent";
 import { useDispatch } from "react-redux";
 import { removeNode } from "../../Stores/nodeStore";
 import { AppDispatch } from "../../Stores/storeRegistry";
 
-export default function NodeCard({ oshNode }: { oshNode: OshNode }) {
+export default function NodeSideBarComponent({ oshNode }: { oshNode: OshNode }) {
   const [expanded, setExpanded] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -39,7 +39,7 @@ export default function NodeCard({ oshNode }: { oshNode: OshNode }) {
       {expanded && (
         <ul className="list-unstyled ms-3 mt-1">
           {oshNode.systems.map((sys) => (
-            <SystemCard
+            <SystemSideBarComponent
               key={sys.id}
               oshSystem={sys}
               oshDataStreams={oshNode.datastreams}

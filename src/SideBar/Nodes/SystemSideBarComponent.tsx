@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { OshDataStream, OshSystem } from "../../dataTypes";
-import DataStreamCard from "./DataStreamCard";
+import DataStreamSideBarComponent from "./DataStreamSideBarComponent";
 
 
-export default function SystemCard({ oshSystem, oshDataStreams }: { oshSystem: OshSystem, oshDataStreams:OshDataStream[] }){
+export default function SystemSideBarComponent({ oshSystem, oshDataStreams }: { oshSystem: OshSystem, oshDataStreams:OshDataStream[] }){
     const [expanded, setExpanded] = useState(false);
 
     // Find all datastreams for the specific system
@@ -26,7 +26,7 @@ export default function SystemCard({ oshSystem, oshDataStreams }: { oshSystem: O
           {expanded && (
             <ul className="list-unstyled ms-3 mt-1">
                 {sysDataStreams.map((ds)=>(
-                    <DataStreamCard key={ds.id} oshDataStream={ds} />                    
+                    <DataStreamSideBarComponent key={ds.id} oshDataStream={ds} />                    
                 ))}
             </ul>
           )}

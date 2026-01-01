@@ -30,7 +30,6 @@ export const fetchDataStreams = async (
 ): Promise<OshDataStream[]> => {
     const oshJsDatastreams = new DataStreams(networkProperties);
     const datastreams = await parseCollection(await oshJsDatastreams.searchDataStreams())
-    debugger
     const oshDataStreams:OshDataStream[] = await Promise.all(datastreams.map(async (ds)=>{
         
         return ({
