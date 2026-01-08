@@ -4,7 +4,7 @@ import SideBarVisualizationSection from "./Visualizations/SideBarVisualizationSe
 
 export default function SideBar() {
     // Create a draggable sidebar for user preference
-    const [width, setWidth] = useState(250);
+    const [width, setWidth] = useState(400);
     const isDragging = useRef(false);
 
     const handleMouseDown = () => {
@@ -17,7 +17,7 @@ export default function SideBar() {
 
         const newWidth = e.clientX;
         const minWidth = 200;
-        const maxWidth = 400;
+        const maxWidth = 450;
 
         if (newWidth >= minWidth && newWidth <= maxWidth) {
         setWidth(newWidth);

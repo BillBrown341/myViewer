@@ -38,10 +38,26 @@ export interface OshNode {
   systems: OshSystem[];
   datastreams:OshDataStream[];  
 }
+export interface OshVisualization {
+  type: string | null;
+  dataSources: any[] | null;
+}
 
 export interface VisualizationDescriptor {
   id:string;
   label:string;
+  viewLocation: "Map" | "Chart" | "Panel";
   icon:string | React.ReactNode;
   description:string;
+  formOptions?: VisualizationFormOption[]; //An array of components for step in the visualization form.
+}
+
+export interface VisualizationFormOption {
+  id: string;
+  label: string;
+  Component: React.FC<VizFormOptionProps>; // The Props 
+}
+// this defines the properties required by each form component in the descriptor
+export interface VizFormOptionProps {
+  onCommitViz: (partialViz:Record<string,any>) => void;     // Each form option requires an onCommit function that update the current visualization
 }

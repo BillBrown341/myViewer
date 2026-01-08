@@ -4,3 +4,32 @@
   height: 100vh;
   overflow: hidden;
 }
+
+.viz-controls {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  
+  display: flex;
+  gap: 12px;
+  
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  z-index: 1000;
+
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.viz-controls.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}

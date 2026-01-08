@@ -20,9 +20,9 @@ const nodeStoreSlice = createSlice({
     },
 
     // Remove a node by name
-    removeNode(state, action: PayloadAction<string>) {
+    removeNode(state, action: PayloadAction<OshNode>) {
       state.allNodes = state.allNodes.filter(
-        (node) => node.nodename !== action.payload
+        (node) => node.id !== action.payload.id
       );
     },
   },

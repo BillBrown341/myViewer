@@ -11,7 +11,7 @@ export default function NodeSideBarComponent({ oshNode }: { oshNode: OshNode }) 
 
   const handleRemove = (e: React.MouseEvent) => {
     e.stopPropagation(); // 🔴 critical
-    dispatch(removeNode(oshNode.nodename));
+    dispatch(removeNode(oshNode));
   };
 
   return (

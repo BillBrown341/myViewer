@@ -13,38 +13,39 @@ export default function LeafletMap() {
     
 
     // 1️⃣ Data source (MATCHES Cesium pattern)
-    const locationDataSource = useMemo(() => new SweApi("Test-Location", {
-        protocol: "ws",
-        endpointUrl: server,
-        resource: `/datastreams/${datastreamId}/observations`,
-        mode: Mode.REAL_TIME
-    }), []);
+    // const locationDataSource = useMemo(() => new SweApi("Test-Location", {
+    //     protocol: "ws",
+    //     endpointUrl: server,
+    //     resource: `/datastreams/${datastreamId}/observations`,
+    //     mode: Mode.REAL_TIME
+    // }), []);
 
     // 2️⃣ Point marker layer (MATCHES Cesium pattern)
-    const pointMarkerLayer = useMemo(() => new PointMarkerLayer({
-        getLocation: {
-            dataSourceIds: [locationDataSource.getId()],
-            handler: (rec: any) => ({
-                x: rec.location.lon,
-                y: rec.location.lat,
-                z: rec.location.alt ?? 0
-            })
-        },
-        name: "Test Marker",
-        label: "Test"
-    }), [locationDataSource]);
+    // const pointMarkerLayer = useMemo(() => new PointMarkerLayer({
+    //     getLocation: {
+    //         dataSourceIds: [locationDataSource.getId()],
+    //         handler: (rec: any) => ({
+    //             x: rec.location.lon,
+    //             y: rec.location.lat,
+    //             z: rec.location.alt ?? 0
+    //         })
+    //     },
+    //     name: "Test Marker",
+    //     label: "Test"
+    // }), [locationDataSource]);
 
     useEffect(() => {
         mapRef.current = new LeafletView({
             container: "map-container",
-            layers: [pointMarkerLayer],
+            // layers: [pointMarkerLayer],
+            layers: [],
             autoZoomOnFirstMarker: true
         });
-    }, [pointMarkerLayer]);
-
-    useEffect(() => {
-        locationDataSource.connect();
     }, []);
+
+    // useEffect(() => {
+    //     locationDataSource.connect();
+    // }, []);
 
     return (
         <div className="map-root">

@@ -14,17 +14,60 @@
  */
 
 import './App.css'
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useState } from "react";
 import SideBar from './SideBar/SideBar';
 import LeafletMap from './Maps/LeafletMap';
-
+import { useSelector } from 'react-redux';
+import { RootState } from './Stores/storeRegistry';
+import AddVisualizationForm from './Forms/AddVisualizationForm';
+import { clear } from './Stores/currentVizStore';
+import { useDispatch } from 'react-redux';
 
 export default function App() {
 
+    const selectedDataStreams = useSelector(
+            (state:RootState)=>state.currentVizStore.selectedDataStreams
+    );
+
+    const showAddVisualiztionControls = selectedDataStreams.length > 0;
+    const dispatch = useDispatch();
+
+    const [showForm, setShowForm] = useState(false);
+
+    
     return (
-        <div className='app-container'>
+        <div className="app-container">
             <SideBar />
             <LeafletMap />
+            <div className={`viz-controls ${showAddVisualiztionControls ? "visible" : ""}`}>
+                <button onClick={()=>setShowForm(true)}>Add Visualization</button>
+                <button onClick={()=>dispatch(clear())}>Clear Selection</button>
+            </div>
+            
+            {/* Modal */}
+            {showForm && (
+                <div className="modal show fade d-block" tabIndex={-1} role="dialog">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Add Visualization</h5>
+                                <button
+                                    type="button"
+                                    className="btn-close"
+                                    onClick={()=>setShowForm(false)}
+                                    aria-label="Close"
+                                ></button>
+                            </div>
+                            <div className="modal-body">
+                                <AddVisualizationForm setShowForm={setShowForm} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Modal backdrop */}
+            {showForm && <div className="modal-backdrop fade show"></div>}
         </div>
     );
 };
