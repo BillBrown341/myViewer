@@ -28,6 +28,7 @@ export default function AddVisualizationForm({ setShowForm }) {
 
     const handleVizSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        // UPDATE  
         if (Object.keys(formStepData).length > 0) {
             dispatch(updateViz(formStepData));
         }
@@ -35,6 +36,7 @@ export default function AddVisualizationForm({ setShowForm }) {
         console.log(formStepData)
 
         setFormStepData({});
+
         // Build using custom builder for your visualization
         const currentVizualization = store.getState().currentVizStore.currentVisualization
         const viz = selectedViz.builder(currentVizualization);

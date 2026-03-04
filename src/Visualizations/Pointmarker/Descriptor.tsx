@@ -14,7 +14,6 @@ const PointmarkerDescriptor: VisualizationDescriptor = {
       label: "Configure Pointmarker Layer",
       Component: PMConfigFormComponent
     }
-
   ],
   builder: PointMarkerBuilder
 };

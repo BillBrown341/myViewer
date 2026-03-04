@@ -46,6 +46,7 @@ const PointMarkerBuilder = (currentVisualization) => {
     
     const pointMarkerLayer =  new PointMarkerLayer(pmObject)
 
+
     return {
             layer: pointMarkerLayer,
             datasources: sweDataSources
