@@ -49,15 +49,16 @@ export interface VisualizationDescriptor {
   viewLocation: "Map" | "Chart" | "Panel";
   icon:string | React.ReactNode;
   description:string;
-  formOptions?: VisualizationFormOption[]; //An array of components for step in the visualization form.
+  formComponents?: VisualizationFormComponent[]; //An array of components for step in the visualization form.
+  builder?:any;
 }
 
-export interface VisualizationFormOption {
+export interface VisualizationFormComponent {
   id: string;
   label: string;
   Component: React.FC<VizFormOptionProps>; // The Props 
 }
 // this defines the properties required by each form component in the descriptor
 export interface VizFormOptionProps {
-  onCommitViz: (partialViz:Record<string,any>) => void;     // Each form option requires an onCommit function that update the current visualization
+  setFormStepData:(data:any)=>void;     
 }

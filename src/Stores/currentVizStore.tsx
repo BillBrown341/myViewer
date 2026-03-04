@@ -43,7 +43,6 @@ const currentVizStoreSlice = createSlice({
         ...state.currentVisualization,
         ...action.payload
       };
-      console.log(state.currentVisualization)
     }
     
   },

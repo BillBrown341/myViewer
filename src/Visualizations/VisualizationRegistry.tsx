@@ -5,6 +5,6 @@ import PointmarkerDescriptor from "./Pointmarker/Descriptor";
 import LoBDescriptor from "./LoB/Descriptor";
 
 export const visualizationRegistry: VisualizationDescriptor[] = [
-  PointmarkerDescriptor,
-  LoBDescriptor,
+  PointmarkerDescriptor
+  // LoBDescriptor
 ];

@@ -4,48 +4,36 @@ import PointMarkerLayer from "osh-js/source/core/ui/layer/PointMarkerLayer.js";
 import SweApi from "osh-js/source/core/datasource/sweapi/SweApi.datasource";
 import { Mode } from "osh-js/source/core/datasource/Mode";
 import "./map.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../Stores/storeRegistry";
 
 export default function LeafletMap() {
     const mapRef = useRef<any>(null);
-    const server = "localhost:8080/sensorhub/api";
-    const datastreamId = "022d7d6grchg";
 
-    
 
-    // 1️⃣ Data source (MATCHES Cesium pattern)
-    // const locationDataSource = useMemo(() => new SweApi("Test-Location", {
-    //     protocol: "ws",
-    //     endpointUrl: server,
-    //     resource: `/datastreams/${datastreamId}/observations`,
-    //     mode: Mode.REAL_TIME
-    // }), []);
+    const dataSources = useSelector(
+                (state:RootState)=>state.vizStore.dataSources
+        );
 
-    // 2️⃣ Point marker layer (MATCHES Cesium pattern)
-    // const pointMarkerLayer = useMemo(() => new PointMarkerLayer({
-    //     getLocation: {
-    //         dataSourceIds: [locationDataSource.getId()],
-    //         handler: (rec: any) => ({
-    //             x: rec.location.lon,
-    //             y: rec.location.lat,
-    //             z: rec.location.alt ?? 0
-    //         })
-    //     },
-    //     name: "Test Marker",
-    //     label: "Test"
-    // }), [locationDataSource]);
+    const layers = useSelector(
+                (state:RootState)=>state.vizStore.layers
+        );
+
 
     useEffect(() => {
         mapRef.current = new LeafletView({
             container: "map-container",
             // layers: [pointMarkerLayer],
-            layers: [],
+            layers: layers,
             autoZoomOnFirstMarker: true
         });
-    }, []);
+    }, [layers]);
 
-    // useEffect(() => {
-    //     locationDataSource.connect();
-    // }, []);
+    useEffect(() => {
+        for (const ds of dataSources){
+            ds.connect()
+        }        
+    }, [dataSources]);
 
     return (
         <div className="map-root">

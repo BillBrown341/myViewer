@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../Stores/storeRegistry";
+import { RootState, store } from "../../Stores/storeRegistry";
 
-export default function PMConfigFormComponent({onCommitViz}) {
+export default function PMConfigFormComponent({setFormStepData}) {
   const selectedDataStreams = useSelector(
     (state: RootState) => state.currentVizStore.selectedDataStreams
   );
 
+ 
   const [useLocation, setUseLocation] = useState(false);
   const [selectedLocationDSId, setSelectedLocationDSId] = useState("");
   const [selectedLocationField, setSelectedLocationField] = useState("");
@@ -15,19 +16,18 @@ export default function PMConfigFormComponent({onCommitViz}) {
     ds => ds.id === selectedLocationDSId
   );
 
-    React.useEffect(() => {
+  React.useEffect(() => {
     if (!useLocation) {
-      onCommitViz({ layerOpts: { location: null } });
+      setFormStepData({ datastreams: [] });
       return;
     }
 
     if (selectedLocationDS && selectedLocationField) {
-      onCommitViz({
-        layerOpts: {
-          location: {
-            locationDS: selectedLocationDS,
-            locationProp: selectedLocationField
-          }
+      setFormStepData({
+        datastreams:[ selectedLocationDS ],
+        location:{
+          prop: selectedLocationField,
+          ds: selectedLocationDS          
         }
       });
     }
